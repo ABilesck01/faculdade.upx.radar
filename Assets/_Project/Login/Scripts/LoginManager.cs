@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using UnityEngine.SceneManagement;
 
 public class LoginManager : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class LoginManager : MonoBehaviour
         {
             Email = txtRegisterEmail.text,
             Password = txtRegisterPassword.text,
-            Username = "Motorista" + SystemInfo.deviceUniqueIdentifier.Substring(0, 4)
+            Username = "Motorista" + SystemInfo.deviceUniqueIdentifier.Substring(0, 4) + Random.Range(0, 1000)
         };
         
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
@@ -53,12 +54,12 @@ public class LoginManager : MonoBehaviour
 
     private void OnResetPasswordSuccess(SendAccountRecoveryEmailResult obj)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Email enviado");
     }
 
     private void OnLoginSuccess(LoginResult obj)
     {
-        throw new System.NotImplementedException();
+        SceneManager.LoadScene(MainGameManager.SceneName);
     }
 
     private void OnError(PlayFabError obj)
@@ -68,6 +69,6 @@ public class LoginManager : MonoBehaviour
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult obj)
     {
-        Debug.Log("register");
+        SceneManager.LoadScene(IntroductionController.SceneName);
     }
 }
