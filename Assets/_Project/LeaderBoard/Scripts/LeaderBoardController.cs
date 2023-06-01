@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LeaderBoardController : MonoBehaviour
 {
+    public const string SceneName = "Ranking";
     public const string LeaderBoardName = "leaderboard";
 
     [SerializeField] private LeaderboardUI leaderboardUI;
