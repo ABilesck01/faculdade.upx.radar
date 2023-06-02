@@ -12,7 +12,7 @@ public class Gps : MonoBehaviour
     
     private void Start()
     {
-        StartCoroutine(Location());
+        //StartCoroutine(Location());
     }
 
     private IEnumerator Location()
