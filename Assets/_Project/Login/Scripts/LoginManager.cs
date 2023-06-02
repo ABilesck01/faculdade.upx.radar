@@ -20,12 +20,15 @@ public class LoginManager : MonoBehaviour
     {
         if(!txtRegisterPassword.text.Equals(txtRegisterRepeatPassword.text))
             return;
-        
+
+        string name = "Motorista" + SystemInfo.deviceUniqueIdentifier.Substring(0, 4) + Random.Range(0, 1000);
+
         var request = new RegisterPlayFabUserRequest
         {
             Email = txtRegisterEmail.text,
             Password = txtRegisterPassword.text,
-            Username = "Motorista" + SystemInfo.deviceUniqueIdentifier.Substring(0, 4) + Random.Range(0, 1000)
+            Username = name,
+            DisplayName = name
         };
         
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
