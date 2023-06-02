@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LeaderboardUI : MonoBehaviour
-{
+{   
     [SerializeField] private Transform container;
     [SerializeField] private LeaderboardItem itemTemplate;
     [Space]
@@ -28,7 +28,7 @@ public class LeaderboardUI : MonoBehaviour
         foreach (PlayerLeaderboardEntry entry in leaderboard)
         {
             LeaderboardItem newItem = Instantiate(itemTemplate, container);
-            newItem.FillInfo(entry.Position.ToString(), entry.DisplayName);
+            newItem.FillInfo((entry.Position + 1).ToString(), entry.DisplayName);
         }
     }
 

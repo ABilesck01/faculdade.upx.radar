@@ -35,7 +35,7 @@ public class MainMenuController : MonoBehaviour
 
     private void BtnStoreOnClick()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(StoreController.SceneName, LoadSceneMode.Additive);
     }
 
     private void btnSettingsgOnClick()
