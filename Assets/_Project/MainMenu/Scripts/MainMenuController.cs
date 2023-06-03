@@ -13,7 +13,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button btnRanking;
     [SerializeField] private Button btnStore;
     [SerializeField] private Button btnSettings;
-    [SerializeField] private Button btnStartGame;
     [Space]
     [SerializeField] private TextMeshProUGUI txtCoins;
     [SerializeField] private TextMeshProUGUI txtDiamonds;
@@ -22,8 +21,7 @@ public class MainMenuController : MonoBehaviour
     {
         btnRanking.onClick.AddListener(BtnRankingOnClick);
         btnStore.onClick.AddListener(BtnStoreOnClick);
-        btnSettings.onClick.AddListener(btnSettingsgOnClick);
-        btnStartGame.onClick.AddListener(BtnStartGameOnClick);
+        btnSettings.onClick.AddListener(BtnSettingsOnClick);
 
         GetVirtualCurrencies();
     }
@@ -38,18 +36,15 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(StoreController.SceneName, LoadSceneMode.Additive);
     }
 
-    private void btnSettingsgOnClick()
+    private void BtnSettingsOnClick()
     {
-        throw new NotImplementedException();
-    }
-
-    private void BtnStartGameOnClick()
-    {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(SettingsController.SceneName, LoadSceneMode.Additive);
     }
 
     private void GetVirtualCurrencies()
     {
+        if (!PlayFabClientAPI.IsClientLoggedIn()) return;
+
         PlayFabClientAPI.GetUserInventory(
             new GetUserInventoryRequest(),
             OnGetUserInventoryRequestSuccess,
