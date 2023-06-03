@@ -110,6 +110,7 @@ public class Speedometer : MonoBehaviour
         }
         else
         {
+            PopupController.ShowPopup("Aviso", "GPS não está habilitado no dispositivo.");
             Debug.LogError("GPS não está habilitado no dispositivo.");
             txtSpeedometer.text = "0";
         }

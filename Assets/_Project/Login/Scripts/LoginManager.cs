@@ -67,7 +67,7 @@ public class LoginManager : MonoBehaviour
 
     private void OnError(PlayFabError obj)
     {
-        Debug.LogError(obj.GenerateErrorReport());
+        PopupController.ShowPopup("Erro", obj.ErrorMessage);
     }
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult obj)

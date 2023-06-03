@@ -70,5 +70,6 @@ public class PlayFabStore : MonoBehaviour
     private void OnError(PlayFabError error)
     {
         Debug.LogError(error);
+        PopupController.ShowPopup("Erro", error.ErrorMessage);
     }
 }

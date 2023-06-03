@@ -41,7 +41,7 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(SettingsController.SceneName, LoadSceneMode.Additive);
     }
 
-    private void GetVirtualCurrencies()
+    public void GetVirtualCurrencies()
     {
         if (!PlayFabClientAPI.IsClientLoggedIn()) return;
 
@@ -61,5 +61,6 @@ public class MainMenuController : MonoBehaviour
     private void OnError(PlayFabError error)
     {
         Debug.LogError(error.ErrorMessage);
+        PopupController.ShowPopup("Erro", error.ErrorMessage);
     }
 }

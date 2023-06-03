@@ -53,6 +53,7 @@ public class LeaderBoardController : MonoBehaviour
     private static void OnError(PlayFabError obj)
     {
         Debug.LogError(obj.ErrorMessage);
+        PopupController.ShowPopup("Erro", obj.ErrorMessage);
     }
 
     private void OnGetLeaderboard(GetLeaderboardResult obj)

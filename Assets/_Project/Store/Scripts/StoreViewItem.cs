@@ -72,10 +72,15 @@ public class StoreViewItem : MonoBehaviour
     private void OnError(PlayFabError error)
     {
         Debug.LogError(error.ErrorMessage);
+        PopupController.ShowPopup("Erro", error.ErrorMessage);
     }
 
     private void OnPurchaseSuccess(PurchaseItemResult result)
     {
         Debug.Log("Bought item");
+        if(virtualCurrency.Equals("DM"))
+            PopupController.ShowPopup("Aviso", "Parabéns pela sua compra! Diriga-se a loja mais próxiam para resgatar seu brinde!");
+        else
+            PopupController.ShowPopup("Aviso", "Parabéns pela sua compra!");
     }
 }
