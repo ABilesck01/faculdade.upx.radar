@@ -10,6 +10,7 @@ public class Map : MonoBehaviour
     public float lat;
     public float lon;
     public int zoom;
+    public bool realTimeMap;
 
     public enum Resolution
     {
@@ -44,10 +45,7 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
-        // _rect = GetComponent<RawImage>().rectTransform.rect;
-        // _mapWidth = (int)Math.Round(_rect.width);
-        // _mapHeight = (int)Math.Round(_rect.height);
-        StartCoroutine(GetGoogleMap());
+        //StartCoroutine(GetGoogleMap());
     }
 
     // private void Update()
@@ -63,8 +61,11 @@ public class Map : MonoBehaviour
     // }
 
     [ContextMenu("Update map")]
-    public void UpdateMap()
+    public void UpdateMap(float lat, float lon)
     {
+        this.lat = lat;
+        this.lon = lon;
+
         StartCoroutine(GetGoogleMap());
     }
 

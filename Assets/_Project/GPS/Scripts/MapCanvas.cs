@@ -22,7 +22,7 @@ public class MapCanvas : MonoBehaviour
 
     private void BtnUpdate_click()
     {
-        map.UpdateMap();
+        //map.UpdateMap();
     }
 
     private void ImpLat_valueChange(string value)

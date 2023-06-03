@@ -7,12 +7,10 @@ using UnityEngine;
 public class Gps : MonoBehaviour
 {
     [SerializeField] private Map map;
-
-    [SerializeField] private TextMeshProUGUI txtDebug;
     
     private void Start()
     {
-        //StartCoroutine(Location());
+        StartCoroutine(Location());
     }
 
     private IEnumerator Location()
@@ -24,11 +22,10 @@ public class Gps : MonoBehaviour
         if (!UnityEngine.Input.location.isEnabledByUser) {
             // TODO Failure
             Debug.LogFormat("Android and Location not enabled");
-            txtDebug.text = "Android and Location not enabled";
             yield break;
         }
         
-        Input.location.Start(100, 100f);
+        Input.location.Start(10, 10f);
                 
         // Wait until service initializes
         int maxWait = 15;
@@ -49,7 +46,6 @@ public class Gps : MonoBehaviour
         if (maxWait < 1) {
             // TODO Failure
             Debug.LogFormat("Timed out");
-            txtDebug.text = "Time out";
             yield break;
         }
 
@@ -57,7 +53,6 @@ public class Gps : MonoBehaviour
         if (UnityEngine.Input.location.status != LocationServiceStatus.Running) {
             // TODO Failure
             Debug.LogFormat("Unable to determine device location. Failed with status {0}", UnityEngine.Input.location.status);
-            txtDebug.text = "Unable to determine device location. Failed with status " + Input.location.status;
             yield break;
         }
 
@@ -70,15 +65,15 @@ public class Gps : MonoBehaviour
                         + UnityEngine.Input.location.lastData.horizontalAccuracy + " "
                         + UnityEngine.Input.location.lastData.timestamp);
 
-        txtDebug.text = "Location: "
-                        + UnityEngine.Input.location.lastData.latitude + " "
-                        + UnityEngine.Input.location.lastData.longitude + " "
-                        + UnityEngine.Input.location.lastData.altitude + " "
-                        + UnityEngine.Input.location.lastData.horizontalAccuracy + " "
-                        + UnityEngine.Input.location.lastData.timestamp;
+        //txtDebug.text = "Location: "
+        //                + UnityEngine.Input.location.lastData.latitude + " "
+        //                + UnityEngine.Input.location.lastData.longitude + " "
+        //                + UnityEngine.Input.location.lastData.altitude + " "
+        //                + UnityEngine.Input.location.lastData.horizontalAccuracy + " "
+        //                + UnityEngine.Input.location.lastData.timestamp;
             
         map.lat = UnityEngine.Input.location.lastData.latitude;
         map.lon = UnityEngine.Input.location.lastData.longitude;
-        map.UpdateMap();
+        //map.UpdateMap();
     }
 }
